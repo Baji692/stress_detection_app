@@ -3,3 +3,6 @@ opencv-python
 fer
 numpy
 gunicorn
+moviepy 
+
+
