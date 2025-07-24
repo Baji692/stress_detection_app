@@ -7,5 +7,5 @@ fer
 numpy
 gunicorn
 moviepy 
-
+tensorflow
 
