@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detection Result</title>
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        .result-box {
+            margin: auto;
+            background: #2c2c2c;
+            border-radius: 10px;
+            padding: 20px;
+            width: 60%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        h2 {
+            color: #00adb5;
+        }
+
+        .stat {
+            font-size: 22px;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #00adb5;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="result-box">
+        <h2>Detection Result</h2>
+        <p class="stat">Emotion: <strong>{{ emotion }}</strong></p>
+        <p class="stat">Confidence: <strong>{{ confidence }}%</strong></p>
+        <p class="stat">Estimated Stress Level: <strong>{{ stress_percent }}%</strong></p>
+        <a href="/">← Back to Home</a>
+    </div>
+    <footer style="margin-top: 60px; color: #aaa; font-size: 14px;">
+        <p>
+            © 2025 | Web App by <strong>Baji Babu</strong>
+        </p>
+        <div style="margin-top: 10px;">
+            <a href="https://github.com/Baji692" target="_blank" title="GitHub"
+                style="display: inline-block; background: #24292e; color: white; padding: 10px 15px; border-radius: 50px; text-decoration: none; margin: 5px; transition: 0.3s;">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" width="20"
+                    style="vertical-align: middle; filter: invert(1); margin-right: 8px;">
+                GitHub
+            </a>
+
+            <a href="https://linkedin.com/in/bajimiriyala" target="_blank" title="LinkedIn"
+                style="display: inline-block; background: #0077b5; color: white; padding: 10px 15px; border-radius: 50px; text-decoration: none; margin: 5px; transition: 0.3s;">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" width="20"
+                    style="vertical-align: middle; filter: invert(1); margin-right: 8px;">
+                LinkedIn
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
