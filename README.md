@@ -29,4 +29,13 @@ A web-based application that detects **human emotions** and estimates **stress l
 
 ## 📁 Project Structure
 
-<pre><code> ``` stress-detection-app/ ├── app.py ├── requirements.txt ├── Procfile ├── README.md ├── templates/ │ ├── index.html │ └── result.html ├── static/ ← (optional: styles/icons/images) │ └── style.css ``` </code></pre>
+stress-detection-app/
+├── app.py
+├── requirements.txt
+├── Procfile
+├── README.md
+├── templates/
+│ ├── index.html
+│ └── result.html
+├── static/ ← (optional: styles/icons/images)
+│ └── style.css
