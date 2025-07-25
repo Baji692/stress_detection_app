@@ -1,143 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Stress Detection</title>
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
-            font-family: 'Segoe UI', sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #00adb5;
-            margin-bottom: 30px;
-        }
-
-        .button {
-            background-color: #333;
-            color: white;
-            padding: 12px 22px;
-            font-size: 16px;
-            margin: 10px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .button:hover {
-            background-color: #00adb5;
-        }
-
-        .video-box {
-            margin: 20px auto;
-            border: 2px solid #444;
-            width: 720px;
-            height: 540px;
-            display: none;
-        }
-
-        .file-wrap {
-            margin-top: 40px;
-            background: #222;
-            display: inline-block;
-            padding: 20px 30px;
-            border-radius: 10px;
-        }
-
-        input[type="file"] {
-            background-color: #2b2b2b;
-            color: #ddd;
-            padding: 8px;
-            border-radius: 6px;
-            border: 1px solid #444;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Stress Detection App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    setTimeout(() => {
+      document.getElementById("splash").style.display = "none";
+      document.getElementById("main").style.display = "block";
+    }, 2000);
+  </script>
 </head>
+<body>
+  <div id="splash">
+    <h1>Stress Detection App</h1>
+    <p>Analyzing Emotions...</p>
+  </div>
 
-<body onload="initPage()">
-    <!-- SPLASH SCREEN -->
-    <div id="splash"
-        style="position: fixed; top:0; left:0; width:100%; height:100%; background:#111; display:flex; align-items:center; justify-content:center; flex-direction: column; z-index:9999;">
-        <h1 style="color:#00adb5; font-size:36px;">Stress Detection App</h1>
-        <p style="color:#ccc;">by Baji Babu</p>
-    </div>
+  <div id="main" style="display:none;">
+    <h2>Upload Image</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="image" required>
+      <button type="submit">Upload</button>
+    </form>
 
-    <!-- MAIN CONTENT -->
-    <div id="mainContent" style="display:none;">
-        <h1>Stress Detection from Facial Expressions</h1>
+    <h2>Live Webcam</h2>
+    <a href="/live"><button>Start Live Detection</button></a>
+  </div>
 
-        <div>
-            <button class="button" onclick="startWebcam()">▶ Start Webcam</button>
-            <button class="button" onclick="stopWebcam()">⏹ Stop Webcam</button>
-        </div>
-
-        <div class="video-box" id="videoBox">
-            <img id="webcam" width="720" height="540">
-        </div>
-
-        <div class="file-wrap">
-            <h3>Or Upload an Image</h3>
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-                <input type="file" name="image" accept="image/*" required>
-                <br><br>
-                <button class="button" type="submit">📁 Upload & Detect</button>
-            </form>
-        </div>
-
-        <!-- FOOTER -->
-        <footer style="margin-top: 60px; color: #aaa; font-size: 14px;">
-            <p>
-                © 2025 | Web App by <strong>Baji Babu</strong>
-            </p>
-            <div style="margin-top: 10px;">
-                <a href="https://github.com/Baji692" target="_blank" title="GitHub"
-                    style="display: inline-block; background: #24292e; color: white; padding: 10px 15px; border-radius: 50px; text-decoration: none; margin: 5px; transition: 0.3s;">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" width="20"
-                        style="vertical-align: middle; filter: invert(1); margin-right: 8px;">
-                    GitHub
-                </a>
-
-                <a href="https://linkedin.com/in/bajimiriyala" target="_blank" title="LinkedIn"
-                    style="display: inline-block; background: #0077b5; color: white; padding: 10px 15px; border-radius: 50px; text-decoration: none; margin: 5px; transition: 0.3s;">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" width="20"
-                        style="vertical-align: middle; filter: invert(1); margin-right: 8px;">
-                    LinkedIn
-                </a>
-            </div>
-        </footer>
-
-    </div>
-
-    <script>
-        function initPage() {
-            setTimeout(() => {
-                document.getElementById('splash').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
-            }, 2000);
-        }
-
-        const videoBox = document.getElementById('videoBox');
-        const webcam = document.getElementById('webcam');
-
-        async function startWebcam() {
-            await fetch('/start_webcam', { method: 'POST' });
-            webcam.src = "/video_feed";
-            videoBox.style.display = "block";
-        }
-
-        async function stopWebcam() {
-            webcam.src = "";
-            videoBox.style.display = "none";
-            await fetch('/stop_webcam', { method: 'POST' });
-        }
-    </script>
+  <footer>
+    <p>Created by Baji Babu</p>
+    <a href="https://linkedin.com/in/baji692" target="_blank"><img src="{{ url_for('static', filename='linkedin.png') }}" alt="LinkedIn"></a>
+    <a href="https://github.com/Baji692" target="_blank"><img src="{{ url_for('static', filename='github.png') }}" alt="GitHub"></a>
+  </footer>
 </body>
-
-
 </html>
